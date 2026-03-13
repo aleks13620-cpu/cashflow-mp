@@ -1,8 +1,10 @@
 import { useCashflow } from '../../hooks/useCashflow';
+import { useStore } from '../../store/useStore';
 import { formatRub, formatDateLong } from '../../utils/format';
 
 export function AlertBanner() {
   const { alert } = useCashflow();
+  const alertThreshold = useStore((s) => s.settings.alertThreshold);
 
   if (!alert) return null;
 
@@ -26,7 +28,7 @@ export function AlertBanner() {
         {isCritical ? 'Кассовый разрыв' : 'Предупреждение'}:{' '}
         {formatDateLong(alert.date)} ({daysText}) баланс опустится до{' '}
         <strong>{formatRub(alert.balance)}</strong>
-        {isCritical ? ' — КРИТИЧНО!' : ` — ниже порога ${formatRub(50_000)}`}
+        {isCritical ? ' — КРИТИЧНО!' : ` — ниже порога ${formatRub(alertThreshold)}`}
       </span>
     </div>
   );
