@@ -2,12 +2,12 @@ import type { Settings, Marketplace, Income, Expense } from '../types';
 
 /**
  * Demo scenario: "Сергей"
- * Seller on Ozon + WB. Faces a cashflow gap on 2025-04-28 due to НДС payment.
+ * Seller on Ozon + WB. Faces a cashflow gap on 2026-08-28 due to НДС payment.
  */
 
 export const DEMO_SETTINGS: Settings = {
   startBalance: 80_000,
-  startDate: '2025-04-01',
+  startDate: '2026-08-01',
   alertThreshold: 50_000,
 };
 
@@ -43,7 +43,7 @@ export const DEMO_INCOMES: Income[] = [
   {
     id: 'inc-1',
     marketplaceId: 'mp-ozon',
-    date: '2025-05-05',
+    date: '2026-09-05',
     amount: 135_000,
     isActual: true,
     note: 'Фактическое поступление Ozon',
@@ -51,7 +51,7 @@ export const DEMO_INCOMES: Income[] = [
   {
     id: 'inc-2',
     marketplaceId: 'mp-wb',
-    date: '2025-05-10',
+    date: '2026-09-10',
     amount: 98_000,
     isActual: true,
     note: 'Фактическое поступление WB',
@@ -106,11 +106,11 @@ export const DEMO_EXPENSES: Expense[] = [
   // One-time: НДС платёж 28 апреля — КРИТИЧЕСКИЙ
   {
     id: 'exp-nds',
-    name: 'НДС (1 кв. 2025)',
+    name: 'НДС (3 кв. 2026)',
     category: 'taxes',
     amount: 380_000,
     isRecurring: false,
-    date: '2025-04-28',
+    date: '2026-08-28',
     note: 'Квартальный платёж НДС — КРИТИЧНО!',
   },
   // Monthly: подписки и сервисы — 1-го
